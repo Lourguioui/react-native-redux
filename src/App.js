@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Text, TextInput, View, Button } from "react-native";
+import { connect } from 'react-redux';
+import {incrementCounter, decrementCounter, resetCounter} from './redux/actions'
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,22 +33,23 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.props.count)
     const { container, countViewStyle, welcome } = styles;
     return (
       <View style={container}>
           <TextInput          
             style={{width: 40, height: 40, borderWidth: 1}}
             onChangeText={this.onChangeText}
-            value={this.state.count.toString()}
+            value={this.props.count.toString()}
            />
         <View style={countViewStyle}> 
-          <Button onPress={this.onPressIncrement} title="+" />
+          <Button onPress={() => this.props.incrementCounter()} title="+" />
           <Text style={welcome}>
-            {this.state.count}
+            {this.props.count}
           </Text>
-          <Button onPress={this.onPressDecrement} title="-" />
+          <Button onPress={() => this.props.decrementCounter()} title="-" />
         </View>
-        <Button onPress={this.onPressClear} title="Clear" />
+        <Button onPress={() => this.props.resetCounter()} title="Clear" />
       </View>
     );
   }
@@ -73,3 +76,11 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   }
 });
+
+const mapStateToProps = (state) =>{
+  return{
+    count : state
+  }
+}
+
+export default connect(mapStateToProps,{incrementCounter, decrementCounter, resetCounter})(App)
