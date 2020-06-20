@@ -1,17 +1,24 @@
+import {
+    INCREMENT,
+    DECREMENT,
+    RESET
+} from './types'
+
+
 export const incrementCounter = () =>{
     return{
-        type : 'INCREMENT'
+        type : INCREMENT
     }
 }
 
 export const decrementCounter = () =>{
     return{
-        type : 'DECREMENT'
+        type : DECREMENT
     }
 }
 
 export const resetCounter = () =>{
     return{
-        type : 'RESET'
+        type : RESET
     }
 }

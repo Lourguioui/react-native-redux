@@ -1,10 +1,16 @@
+import {
+    INCREMENT,
+    DECREMENT,
+    RESET
+} from '../actions/types'
+
 export default (state = 0, action) => {
     switch(action.type){
-        case 'INCREMENT':
+        case INCREMENT:
             return state + 1
-        case 'DECREMENT':
+        case DECREMENT:
             return state - 1
-        case 'RESET' :
+        case RESET :
             return 0
 
         default:
