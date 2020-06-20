@@ -40,16 +40,19 @@ class App extends Component {
           <TextInput          
             style={{width: 40, height: 40, borderWidth: 1}}
             onChangeText={this.onChangeText}
-            value={this.props.count.toString()}
+            value={this.props.counter.toString()}
            />
         <View style={countViewStyle}> 
           <Button onPress={() => this.props.incrementCounter()} title="+" />
           <Text style={welcome}>
-            {this.props.count}
+            {this.props.counter}
           </Text>
           <Button onPress={() => this.props.decrementCounter()} title="-" />
         </View>
         <Button onPress={() => this.props.resetCounter()} title="Clear" />
+        <Text>
+          {this.props.hello.helloText}
+        </Text>
       </View>
     );
   }
@@ -78,8 +81,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) =>{
+  const {counter, hello} = state;
   return{
-    count : state
+    counter,
+    hello
   }
 }
 

@@ -4,9 +4,9 @@ import App from './src/App';
 import { name as appName } from './app.json';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from './src/redux/reducers/countReducer'
+import reducers from './src/redux/reducers'
 
-const store = createStore(reducer)
+const store = createStore(reducers)
 
 const AppContainer = () => {
     return (
